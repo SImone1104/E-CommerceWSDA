@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - TechShop</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo"><a href="home.html">TechShop</a></div>
+        <p class="customer-name">Ciao, Simone</p>
+        <form id="searchForm" class="search-form" action="home.html" method="get" onsubmit="return searchProducts();">
+            <label class="visually-hidden" for="searchInput">Cerca un prodotto</label>
+            <input type="text" id="searchInput" name="ricerca" placeholder="Cerca un prodotto..." required>
+            <input type="submit" value="Cerca">
+        </form>
+        <nav class="menu">
+            <a href="home.html">Home</a>
+            <a href="#accountBox" onclick="toggleAccount(); return false;">Account</a>
+            <a href="carrello.html">Carrello</a>
+        </nav>
+    </header>
+
+    <aside id="accountBox" class="account-box">
+        <h2>Il mio account</h2>
+        <a href="#">Profilo</a>
+        <a href="#">I miei ordini</a>
+        <a href="#">Impostazioni</a>
+    </aside>
+
+    <div class="page-layout">
+        <aside class="sidebar">
+            <h2>Categorie</h2>
+            <ul>
+                <li><a href="#">Computer</a></li>
+                <li><a href="#">Smartphone</a></li>
+                <li><a href="#">Tablet</a></li>
+                <li><a href="#">Accessori</a></li>
+                <li><a href="#">Cuffie</a></li>
+                <li><a href="#">Gaming</a></li>
+            </ul>
+        </aside>
+
+        <main class="products-container">
+            <h1>Prodotti in evidenza</h1>
+            <section class="products-list">
+                <article class="product-card">
+                    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600" alt="Laptop Pro">
+                    <div class="product-info">
+                        <h2>Laptop Pro</h2>
+                        <p>Laptop potente e leggero, ideale per studio, lavoro e intrattenimento.</p>
+                        <p class="stars">★★★★★</p>
+                        <p class="price">€899,99</p>
+                        <p class="product-buttons"><button type="button" class="btn product-button" onclick="showCartMessage('Laptop Pro');">Aggiungi al carrello</button><button type="button" class="btn product-button" onclick="showProductInfo('Laptop Pro');">Maggiori informazioni</button></p>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=600" alt="Smartphone X">
+                    <div class="product-info">
+                        <h2>Smartphone X</h2>
+                        <p>Smartphone di ultima generazione con display ad alta risoluzione e ottima fotocamera.</p>
+                        <p class="stars">★★★★☆</p>
+                        <p class="price">€699,99</p>
+                        <p class="product-buttons"><button type="button" class="btn product-button" onclick="showCartMessage('Smartphone X');">Aggiungi al carrello</button><button type="button" class="btn product-button" onclick="showProductInfo('Smartphone X');">Maggiori informazioni</button></p>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=600" alt="Cuffie Wireless">
+                    <div class="product-info">
+                        <h2>Cuffie Wireless</h2>
+                        <p>Cuffie wireless con cancellazione del rumore e autonomia fino a 30 ore.</p>
+                        <p class="stars">★★★★★</p>
+                        <p class="price">€149,99</p>
+                        <p class="product-buttons"><button type="button" class="btn product-button" onclick="showCartMessage('Cuffie Wireless');">Aggiungi al carrello</button><button type="button" class="btn product-button" onclick="showProductInfo('Cuffie Wireless');">Maggiori informazioni</button></p>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=600" alt="Desktop Gaming">
+                    <div class="product-info">
+                        <h2>Desktop Gaming</h2>
+                        <p>Computer desktop progettato per gaming, grafica e applicazioni ad alte prestazioni.</p>
+                        <p class="stars">★★★★☆</p>
+                        <p class="price">€1299,99</p>
+                        <p class="product-buttons"><button type="button" class="btn product-button" onclick="showCartMessage('Desktop Gaming');">Aggiungi al carrello</button><button type="button" class="btn product-button" onclick="showProductInfo('Desktop Gaming');">Maggiori informazioni</button></p>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+
+    <div id="cartModal" class="modal">
+        <section class="modal-content">
+            <button type="button" class="close" onclick="hideElement('cartModal');">Chiudi</button>
+            <h2>Prodotto aggiunto</h2>
+            <p id="cartModalText">Il prodotto è stato aggiunto al carrello.</p>
+            <a href="carrello.html" class="btn modal-button">Vai al carrello</a>
+        </section>
+    </div>
+    <div id="infoModal" class="modal">
+        <section class="modal-content">
+            <button type="button" class="close" onclick="hideElement('infoModal');">Chiudi</button>
+            <img id="modalProductImage" src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600" alt="Immagine prodotto">
+            <h2 id="modalProductName">Laptop Pro</h2>
+            <p id="modalProductDescription">Laptop potente e leggero con processore di ultima generazione, ideale per studio, lavoro e intrattenimento.</p>
+            <p id="modalProductPrice" class="price">€899,99</p>
+        </section>
+    </div>
+    <footer class="footer">
+        <p>© 2026 TechShop - Tutti i diritti riservati.</p>
+        <p>I prezzi e le disponibilità dei prodotti sono puramente indicativi e utilizzati a scopo didattico.</p>
+        <p>Privacy | Termini e condizioni | Contatti</p>
+    </footer>
+    <script src="js/logica.js"></script>
+</body>
+</html>

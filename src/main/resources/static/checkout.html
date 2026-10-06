@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - TechShop</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo"><a href="home.html">TechShop</a></div>
+        <p class="customer-name">Ciao, Simone</p>
+        <form id="searchForm" class="search-form" action="home.html" method="get" onsubmit="return searchProducts();">
+            <label class="visually-hidden" for="searchInput">Cerca un prodotto</label>
+            <input type="text" id="searchInput" name="ricerca" placeholder="Cerca un prodotto..." required>
+            <input type="submit" value="Cerca">
+        </form>
+        <nav class="menu"><a href="home.html">Home</a><a href="#accountBox" onclick="toggleAccount(); return false;">Account</a><a href="carrello.html">Carrello</a></nav>
+    </header>
+    <aside id="accountBox" class="account-box"><h2>Il mio account</h2><a href="#">Profilo</a><a href="#">I miei ordini</a><a href="#">Impostazioni</a></aside>
+
+    <main class="checkout-page">
+        <h1>Checkout</h1>
+        <form id="checkoutForm" action="conferma.html" method="get" onsubmit="return completeOrder();">
+            <div class="checkout-layout">
+                <div class="checkout-content">
+                    <fieldset class="checkout-section">
+                        <legend>Indirizzo di spedizione</legend>
+                        <p class="form-group"><label for="nomeSpedizione">Nome e cognome</label><input type="text" id="nomeSpedizione" name="nomeSpedizione" value="Simone Sottile" required></p>
+                        <p class="form-group"><label for="indirizzo">Indirizzo</label><input type="text" id="indirizzo" name="indirizzo" placeholder="Via Roma 10" required></p>
+                        <div class="checkout-row">
+                            <p class="form-group"><label for="citta">Città</label><input type="text" id="citta" name="citta" placeholder="Palermo" required></p>
+                            <p class="form-group"><label for="cap">CAP</label><input type="text" id="cap" name="cap" placeholder="90100" pattern="[0-9]{5}" maxlength="5" required></p>
+                        </div>
+                        <p class="form-group"><label for="provincia">Provincia</label><input type="text" id="provincia" name="provincia" placeholder="PA" maxlength="2" required></p>
+                    </fieldset>
+                    <fieldset class="checkout-section">
+                        <legend>Metodo di pagamento</legend>
+                        <p class="payment-option"><input type="radio" id="carta" name="pagamento" value="carta" checked onchange="setPaymentMethod('carta');"><label for="carta">Carta di credito</label></p>
+                        <p class="payment-option"><input type="radio" id="paypal" name="pagamento" value="paypal" onchange="setPaymentMethod('paypal');"><label for="paypal">PayPal</label></p>
+                        <p class="payment-option"><input type="radio" id="contrassegno" name="pagamento" value="contrassegno" onchange="setPaymentMethod('contrassegno');"><label for="contrassegno">Pagamento alla consegna</label></p>
+                        <div id="cardData">
+                            <p class="form-group"><label for="numeroCarta">Numero carta</label><input type="text" id="numeroCarta" name="numeroCarta" placeholder="1234 5678 9012 3456" pattern="[0-9 ]{13,19}" required></p>
+                            <div class="checkout-row">
+                                <p class="form-group"><label for="scadenza">Scadenza</label><input type="month" id="scadenza" name="scadenza" required></p>
+                                <p class="form-group"><label for="cvv">CVV</label><input type="text" id="cvv" name="cvv" placeholder="123" pattern="[0-9]{3}" maxlength="3" required></p>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <aside class="checkout-summary">
+                    <h2>Riepilogo ordine</h2>
+                    <p class="summary-row"><span>Prodotti</span><strong>€1049,98</strong></p>
+                    <p class="summary-row"><span>Spedizione</span><strong>Gratuita</strong></p>
+                    <hr>
+                    <p class="summary-row total-row"><span>Totale</span><strong>€1049,98</strong></p>
+                    <input type="submit" class="btn checkout-button" value="Conferma acquisto">
+                </aside>
+            </div>
+        </form>
+    </main>
+    <footer class="footer"><p>© 2026 TechShop - Tutti i diritti riservati.</p><p>I prezzi e le disponibilità dei prodotti sono puramente indicativi e utilizzati a scopo didattico.</p><p>Privacy | Termini e condizioni | Contatti</p></footer>
+    <script src="js/logica.js"></script>
+</body>
+</html>

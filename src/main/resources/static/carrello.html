@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrello - TechShop</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body onload="calculateCartTotal();">
+    <header class="navbar">
+        <div class="logo"><a href="home.html">TechShop</a></div>
+        <p class="customer-name">Ciao, Simone</p>
+        <form id="searchForm" class="search-form" action="home.html" method="get" onsubmit="return searchProducts();">
+            <label class="visually-hidden" for="searchInput">Cerca un prodotto</label>
+            <input type="text" id="searchInput" name="ricerca" placeholder="Cerca un prodotto..." required>
+            <input type="submit" value="Cerca">
+        </form>
+        <nav class="menu"><a href="home.html">Home</a><a href="#accountBox" onclick="toggleAccount(); return false;">Account</a><a href="carrello.html">Carrello</a></nav>
+    </header>
+    <aside id="accountBox" class="account-box"><h2>Il mio account</h2><a href="#">Profilo</a><a href="#">I miei ordini</a><a href="#">Impostazioni</a></aside>
+    <main class="cart-page">
+        <h1>Il mio carrello</h1>
+        <div class="cart-layout">
+            <section class="cart-products">
+                <article class="cart-product">
+                    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600" alt="Laptop Pro">
+                    <div class="cart-product-info"><h2>Laptop Pro</h2><p>Laptop potente e leggero, ideale per studio, lavoro e intrattenimento.</p><p class="cart-price">€899,99</p></div>
+                    <p class="quantity"><label for="quantity1">Quantità</label><input type="number" id="quantity1" name="quantitaLaptop" value="1" min="1" max="10" step="1" onchange="calculateCartTotal();"></p>
+                </article>
+                <article class="cart-product">
+                    <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=600" alt="Cuffie Wireless">
+                    <div class="cart-product-info"><h2>Cuffie Wireless</h2><p>Cuffie wireless con cancellazione del rumore e autonomia fino a 30 ore.</p><p class="cart-price">€149,99</p></div>
+                    <p class="quantity"><label for="quantity2">Quantità</label><input type="number" id="quantity2" name="quantitaCuffie" value="1" min="1" max="10" step="1" onchange="calculateCartTotal();"></p>
+                </article>
+            </section>
+            <aside class="cart-summary">
+                <h2>Riepilogo ordine</h2>
+                <p class="summary-row"><span>Subtotale</span><strong id="cartTotal">€1049,98</strong></p>
+                <p class="summary-row"><span>Spedizione</span><strong>Gratuita</strong></p>
+                <hr>
+                <p class="summary-row total-row"><span>Totale</span><strong id="finalTotal">€1049,98</strong></p>
+                <a href="checkout.html" class="btn checkout-button">Vai al checkout</a>
+            </aside>
+        </div>
+    </main>
+    <footer class="footer"><p>© 2026 TechShop - Tutti i diritti riservati.</p><p>I prezzi e le disponibilità dei prodotti sono puramente indicativi e utilizzati a scopo didattico.</p><p>Privacy | Termini e condizioni | Contatti</p></footer>
+    <script src="js/logica.js"></script>
+</body>
+</html>
